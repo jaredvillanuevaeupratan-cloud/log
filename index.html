@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exotic Car Care | Premium Auto Detailing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Exotic Car Care | Premium Auto Detailing & Products</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+            --gold: #fbbf24;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gold-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            --dark-bg: #0a0a0f;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-primary: #ffffff;
-            --text-secondary: #b8b8d0;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--darker);
+            color: var(--light);
             overflow-x: hidden;
             line-height: 1.6;
         }
@@ -40,17 +41,50 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(240, 147, 251, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 60% 60%, rgba(79, 172, 254, 0.1) 0%, transparent 50%);
-            animation: bgPulse 15s ease-in-out infinite;
+            overflow: hidden;
         }
 
-        @keyframes bgPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--accent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 30px) scale(0.9); }
+            75% { transform: translate(40px, 20px) scale(1.05); }
         }
 
         /* Navigation */
@@ -58,81 +92,64 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
             backdrop-filter: blur(20px);
-            background: rgba(10, 10, 15, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid var(--glass-border);
             transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 1rem 5%;
-            background: rgba(10, 10, 15, 0.95);
         }
 
         .logo {
             font-size: 2rem;
             font-weight: 800;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-transform: uppercase;
             letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-primary);
+            color: var(--light);
             text-decoration: none;
             font-weight: 500;
             position: relative;
+            padding: 0.5rem 0;
             transition: color 0.3s ease;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--secondary-gradient);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        .nav-links a:hover {
-            color: #f5576c;
-        }
-
-        .mobile-menu-btn {
+        .mobile-menu {
             display: none;
-            background: none;
-            border: none;
-            color: white;
             font-size: 1.5rem;
             cursor: pointer;
         }
@@ -143,456 +160,256 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 120px 5% 80px;
+            text-align: center;
+            padding: 6rem 5% 4rem;
             position: relative;
-            overflow: hidden;
         }
 
         .hero-content {
-            text-align: center;
-            max-width: 1200px;
+            max-width: 900px;
             z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 10px 30px;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            backdrop-filter: blur(10px);
-            animation: fadeInUp 0.8s ease;
         }
 
         .hero h1 {
             font-size: 4.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
             line-height: 1.1;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .hero h1 span {
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, #fff, var(--gold), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
         }
 
-        .hero h1 .exotic {
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(236, 72, 153, 0.8)); }
         }
 
         .hero p {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: #cbd5e1;
             max-width: 700px;
-            margin: 0 auto 40px;
-            animation: fadeInUp 0.8s ease 0.4s both;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero-buttons {
+        .btn-group {
             display: flex;
-            gap: 20px;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.6s both;
         }
 
         .btn {
-            padding: 15px 40px;
+            padding: 1rem 2.5rem;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 700;
+            font-size: 1.1rem;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn-primary {
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.6);
         }
 
         .btn-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--light);
+            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            border-color: #f5576c;
-            color: #f5576c;
-            transform: translateY(-3px);
+            background: var(--glass);
+            border-color: var(--gold);
+            color: var(--gold);
         }
 
-        .hero-image {
-            position: absolute;
-            bottom: -100px;
-            right: -100px;
-            width: 600px;
-            height: 600px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
+        /* Section Styling */
+        section {
+            padding: 6rem 5%;
         }
 
-        .hero-image-2 {
-            position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            background: var(--secondary-gradient);
-            border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.2;
-            animation: float 8s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -30px); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Services Section */
-        .services {
-            padding: 100px 5%;
-            position: relative;
-        }
-
-        .section-header {
+        .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 4rem;
         }
 
-        .section-tag {
-            display: inline-block;
-            padding: 8px 25px;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            margin-bottom: 20px;
-            font-size: 0.85rem;
-            color: #f5576c;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .section-header h2 span {
-            background: var(--accent-gradient);
+        .section-title h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .section-header p {
-            color: var(--text-secondary);
+        .section-title p {
+            font-size: 1.2rem;
+            color: #94a3b8;
             max-width: 600px;
             margin: 0 auto;
-            font-size: 1.1rem;
         }
 
-        .services-grid {
+        /* Products Section */
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .service-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .product-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 40px 30px;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            position: relative;
             overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: transparent;
-        }
-
-        .service-card:hover::before {
-            opacity: 0.1;
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--primary-gradient);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 25px;
             transition: all 0.4s ease;
-        }
-
-        .service-card:nth-child(2) .service-icon {
-            background: var(--secondary-gradient);
-        }
-
-        .service-card:nth-child(3) .service-icon {
-            background: var(--accent-gradient);
-        }
-
-        .service-card:nth-child(4) .service-icon {
-            background: var(--gold-gradient);
-        }
-
-        .service-card:nth-child(5) .service-icon {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-        }
-
-        .service-card:nth-child(6) .service-icon {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .service-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .service-card:nth-child(2) .service-price {
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .service-card:nth-child(3) .service-price {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 5%;
+            backdrop-filter: blur(20px);
             position: relative;
         }
 
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            max-width: 1400px;
-            margin: 0 auto;
-            align-items: center;
+        .product-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.3);
         }
 
-        .about-image {
-            position: relative;
-        }
-
-        .about-img-main {
-            width: 100%;
-            height: 500px;
-            background: var(--primary-gradient);
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .about-img-main i {
-            font-size: 10rem;
-            opacity: 0.3;
-        }
-
-        .about-img-floating {
+        .product-badge {
             position: absolute;
-            bottom: -30px;
-            right: -30px;
-            width: 200px;
-            height: 200px;
-            background: var(--secondary-gradient);
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--secondary), var(--gold));
+            color: white;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .about-content h2 {
-            font-size: 3rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 25px;
-            line-height: 1.2;
+            z-index: 2;
         }
 
-        .about-content h2 span {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
         }
 
-        .about-content p {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .product-card:hover .product-image {
+            transform: scale(1.1);
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
+        .product-info {
+            padding: 2rem;
         }
 
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
+        .product-brand {
+            color: var(--gold);
             font-size: 0.9rem;
-            margin-top: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: white;
+        }
+
+        .product-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-buy {
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-buy:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(236, 72, 153, 0.5);
         }
 
         /* Gallery Section */
-        .gallery {
-            padding: 100px 5%;
-            position: relative;
-        }
-
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
         .gallery-item {
-            height: 300px;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
             border-radius: 20px;
             overflow: hidden;
-            position: relative;
+            aspect-ratio: 16/10;
             cursor: pointer;
-            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .gallery-item:hover {
-            transform: scale(1.05);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .gallery-item-bg {
+        .gallery-item img {
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            opacity: 0.5;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        .gallery-item:nth-child(1) .gallery-item-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .gallery-item:nth-child(2) .gallery-item-bg { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .gallery-item:nth-child(3) .gallery-item-bg { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .gallery-item:nth-child(4) .gallery-item-bg { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
-        .gallery-item:nth-child(5) .gallery-item-bg { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
-        .gallery-item:nth-child(6) .gallery-item-bg { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
 
         .gallery-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 100%;
-            padding: 30px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 2rem;
             transform: translateY(100%);
             transition: transform 0.4s ease;
         }
@@ -601,552 +418,343 @@
             transform: translateY(0);
         }
 
-        .gallery-overlay h4 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
+        .gallery-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
         }
 
-        .gallery-overlay p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .gallery-service {
+            color: var(--gold);
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         /* Testimonials Section */
-        .testimonials {
-            padding: 100px 5%;
-            position: relative;
-        }
-
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1600px;
+            gap: 2.5rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .testimonial-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 35px;
-            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
             transition: all 0.4s ease;
+            position: relative;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.25);
         }
 
-        .testimonial-stars {
-            color: #f6d365;
-            font-size: 1.1rem;
-            margin-bottom: 18px;
+        .stars {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
         }
 
         .testimonial-text {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 22px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
             font-style: italic;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 1rem;
         }
 
         .author-avatar {
-            width: 55px;
-            height: 55px;
-            background: var(--primary-gradient);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
+            object-fit: cover;
+            border: 3px solid var(--gold);
         }
 
         .author-info h4 {
-            font-size: 1rem;
-            margin-bottom: 3px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.3rem;
         }
 
-        .author-info p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+        .author-role {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
-        /* Products Section */
-        .products {
-            padding: 100px 5%;
-            position: relative;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            max-width: 1400px;
-            margin: 0 auto 60px;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 8px 20px;
-            background: var(--primary-gradient);
-            border-radius: 50px;
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 600;
-            z-index: 10;
+            margin-top: 0.5rem;
         }
 
-        .product-badge.hot {
-            background: var(--secondary-gradient);
-        }
-
-        .product-badge.pro {
-            background: var(--gold-gradient);
-        }
-
-        .product-image {
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-icon {
-            width: 120px;
-            height: 120px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-            transition: all 0.4s ease;
-        }
-
-        .product-card:hover .product-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .product-info {
-            padding: 30px;
-        }
-
-        .product-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .product-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .product-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .product-features li {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .product-features li i {
-            color: #00f2fe;
-            font-size: 0.8rem;
-        }
-
-        .product-price {
-            font-size: 2rem;
-            font-weight: 800;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-        }
-
-        .product-btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .products-cta {
-            text-align: center;
-            padding: 50px;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-            max-width: 900px;
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .products-cta h3 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+        .service-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
         }
 
-        .products-cta h3 span {
-            background: var(--primary-gradient);
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.25);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .products-cta p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+        .service-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .service-card p {
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
         }
 
         /* Contact Section */
-        .contact {
-            padding: 100px 5%;
-            position: relative;
-        }
-
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            max-width: 1400px;
+            gap: 4rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .contact-info h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-        }
-
-        .contact-info h2 span {
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .contact-info p {
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
+        .contact-info {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .contact-icon {
             width: 60px;
             height: 60px;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
-        .contact-item:nth-child(2) .contact-icon {
-            background: var(--secondary-gradient);
+        .contact-text h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
         }
 
-        .contact-item:nth-child(3) .contact-icon {
-            background: var(--accent-gradient);
-        }
-
-        .contact-item h4 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .contact-item p {
-            color: var(--text-secondary);
-            margin: 0;
-            font-size: 1rem;
+        .contact-text p {
+            color: #94a3b8;
         }
 
         .contact-form {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 50px;
-            backdrop-filter: blur(10px);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 10px;
-            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #e2e8f0;
         }
 
         .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 15px 20px;
+            padding: 1rem;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
             color: white;
-            font-family: inherit;
             font-size: 1rem;
             transition: all 0.3s ease;
         }
 
         .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: #667eea;
-            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
         }
 
         .form-group textarea {
-            height: 150px;
             resize: vertical;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: var(--primary-gradient);
-            border: none;
-            border-radius: 15px;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            min-height: 120px;
         }
 
         /* Footer */
         footer {
-            padding: 80px 5% 40px;
-            background: rgba(0, 0, 0, 0.5);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(2, 6, 23, 0.95);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--glass-border);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
             max-width: 1400px;
-            margin: 0 auto 60px;
+            margin: 0 auto 3rem;
         }
 
-        .footer-brand .logo {
-            margin-bottom: 20px;
+        .footer-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .footer-brand p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 25px;
+        .footer-section p,
+        .footer-section a {
+            color: #94a3b8;
+            line-height: 2;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-link {
             width: 45px;
             height: 45px;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            text-decoration: none;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            background: var(--primary-gradient);
-            border-color: transparent;
-            transform: translateY(-3px);
-        }
-
-        .footer-links h4 {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 15px;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #f5576c;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: translateY(-5px);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-secondary);
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: #64748b;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .about-container,
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 40px;
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(10, 10, 15, 0.98);
-                flex-direction: column;
-                padding: 30px;
-                gap: 20px;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
             }
 
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
+            .mobile-menu {
                 display: block;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             .hero p {
                 font-size: 1.1rem;
             }
 
-            .section-header h2,
-            .about-content h2,
-            .contact-info h2 {
-                font-size: 2rem;
+            .section-title h2 {
+                font-size: 2.5rem;
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .form-row {
+            .contact-container {
                 grid-template-columns: 1fr;
             }
 
-            .footer-content {
+            .gallery-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .products-cta h3 {
-                font-size: 1.8rem;
             }
         }
 
-        /* Scroll Animations */
+        /* Animations on Scroll */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -1161,135 +769,102 @@
 </head>
 <body>
     <!-- Background Animation -->
-    <div class="bg-animation"></div>
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
     <!-- Navigation -->
-    <nav id="navbar">
-        <div class="logo">
-            <i class="fas fa-car-side"></i>
-            Exotic Car Care
-        </div>
-        <ul class="nav-links" id="navLinks">
+    <nav>
+        <div class="logo">EXOTIC</div>
+        <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
             <li><a href="#products">Products</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#services">Services</a></li>
             <li><a href="#testimonials">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <div class="mobile-menu">
             <i class="fas fa-bars"></i>
-        </button>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-image"></div>
-        <div class="hero-image-2"></div>
         <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-star"></i> Premium Auto Detailing & Care
-            </div>
-            <h1>Where <span>Luxury</span> Meets <span class="exotic">Perfection</span></h1>
-            <p>Experience the ultimate in exotic car care. Our expert technicians treat your vehicle with the precision and attention it deserves, using only the finest products and techniques.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-calendar-check"></i> Book Appointment
-                </a>
-                <a href="#services" class="btn btn-secondary">
-                    <i class="fas fa-play-circle"></i> View Services
-                </a>
+            <h1>EXOTIC CAR CARE</h1>
+            <p>The ultimate destination for luxury vehicle detailing, premium care products, and unmatched craftsmanship. Where perfection meets passion.</p>
+            <div class="btn-group">
+                <a href="#products" class="btn btn-primary">Shop Products</a>
+                <a href="#contact" class="btn btn-secondary">Book Service</a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="section-header fade-in">
-            <span class="section-tag">Our Services</span>
-            <h2>Premium <span>Car Care</span> Solutions</h2>
-            <p>Comprehensive detailing services tailored for exotic and luxury vehicles</p>
+    <!-- Products Section -->
+    <section id="products">
+        <div class="section-title fade-in">
+            <h2>EXOTIC PRODUCTS</h2>
+            <p>Professional-grade car care products formulated for the world's finest vehicles</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-soap"></i>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card fade-in">
+                <span class="product-badge">BEST SELLER</span>
+                <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=600&h=400&fit=crop" alt="Ceramic Exotic" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">BY EXOTIC</div>
+                    <h3 class="product-name">Ceramic Exotic</h3>
+                    <p class="product-desc">Premium 9H ceramic coating providing unparalleled protection and mirror-like shine. Lasts up to 5 years with hydrophobic technology.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$149.99</span>
+                        <button class="btn-buy">Add to Cart</button>
+                    </div>
                 </div>
-                <h3>Full Detail Package</h3>
-                <p>Complete interior and exterior detailing including hand wash, clay bar treatment, polish, and premium wax protection.</p>
-                <div class="service-price">$299</div>
             </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <h3>Ceramic Coating</h3>
-                <p>Long-lasting ceramic coating protection that provides superior gloss, hydrophobic properties, and paint defense.</p>
-                <div class="service-price">$899</div>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-car-crash"></i>
-                </div>
-                <h3>Paint Correction</h3>
-                <p>Multi-stage paint correction to remove swirls, scratches, and imperfections for a mirror-like finish.</p>
-                <div class="service-price">$599</div>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-couch"></i>
-                </div>
-                <h3>Interior Restoration</h3>
-                <p>Deep cleaning and conditioning of leather, carpets, and all interior surfaces with premium products.</p>
-                <div class="service-price">$349</div>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>PPF Installation</h3>
-                <p>Professional Paint Protection Film installation to guard against rock chips, bugs, and road debris.</p>
-                <div class="service-price">$1,499</div>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">
-                    <i class="fas fa-wind"></i>
-                </div>
-                <h3>Engine Bay Detail</h3>
-                <p>Safe and thorough engine bay cleaning and dressing to keep your engine looking showroom fresh.</p>
-                <div class="service-price">$199</div>
-            </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-image fade-in">
-                <div class="about-img-main">
-                    <i class="fas fa-car"></i>
-                </div>
-                <div class="about-img-floating">
-                    <i class="fas fa-medal"></i>
+            <!-- Product 2 -->
+            <div class="product-card fade-in">
+                <span class="product-badge">HOT</span>
+                <img src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?w=600&h=400&fit=crop" alt="Magic Restorer" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">BY EXOTIC</div>
+                    <h3 class="product-name">Magic Restorer</h3>
+                    <p class="product-desc">Advanced formula restores faded plastic, rubber, and vinyl to factory-fresh condition. UV protection included for long-lasting results.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$49.99</span>
+                        <button class="btn-buy">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-            <div class="about-content fade-in">
-                <h2>The <span>Exotic</span> Difference</h2>
-                <p>At Exotic Car Care, we understand that your vehicle is more than just transportation—it's a passion, an investment, and a statement. Founded by automotive enthusiasts with over 15 years of experience, we specialize in providing unparalleled care for exotic, luxury, and classic vehicles.</p>
-                <p>Our state-of-the-art facility features climate-controlled bays, premium products from industry leaders, and technicians who are certified in the latest detailing techniques. We treat every vehicle as if it were our own, ensuring meticulous attention to every detail.</p>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="2500">0</span>
-                        <span class="stat-label">Cars Detailed</span>
+
+            <!-- Product 3 -->
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?w=600&h=400&fit=crop" alt="Acid Rain Shield" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">BY EXOTIC</div>
+                    <h3 class="product-name">Acid Rain Shield</h3>
+                    <p class="product-desc">Revolutionary protective barrier against acid rain, bird droppings, and environmental contaminants. Essential for paint preservation.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$79.99</span>
+                        <button class="btn-buy">Add to Cart</button>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="15">0</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="100">0</span>
-                        <span class="stat-label">% Satisfaction</span>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card fade-in">
+                <span class="product-badge">PRO KIT</span>
+                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="Exotic Tool Kit" class="product-image">
+                <div class="product-info">
+                    <div class="product-brand">BY EXOTIC</div>
+                    <h3 class="product-name">Exotic Tool Kit</h3>
+                    <p class="product-desc">Complete 25-piece professional detailing tool set. Includes microfiber towels, brushes, applicators, and premium carrying case.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$199.99</span>
+                        <button class="btn-buy">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -1297,486 +872,405 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="section-header fade-in">
-            <span class="section-tag">Our Work</span>
-            <h2>Featured <span>Transformations</span></h2>
-            <p>See the incredible results we achieve for our clients</p>
+    <section id="gallery">
+        <div class="section-title fade-in">
+            <h2>OUR WORK</h2>
+            <p>Showcasing transformations of the world's most exotic vehicles</p>
         </div>
         <div class="gallery-grid">
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg">
-                    <i class="fas fa-car-sport"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1544605954-17e6e1db9b21?w=800&h=500&fit=crop" alt="Lamborghini Detail">
                 <div class="gallery-overlay">
-                    <h4>Lamborghini Huracán</h4>
-                    <p>Full Detail + Ceramic Coating</p>
+                    <h3 class="gallery-title">Lamborghini Aventador</h3>
+                    <p class="gallery-service">Full Ceramic Coating + Paint Correction</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg">
-                    <i class="fas fa-car"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=800&h=500&fit=crop" alt="Ferrari Restoration">
                 <div class="gallery-overlay">
-                    <h4>Ferrari 488</h4>
-                    <p>Paint Correction & PPF</p>
+                    <h3 class="gallery-title">Ferrari 488 GTB</h3>
+                    <p class="gallery-service">Interior Restoration & Leather Conditioning</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg">
-                    <i class="fas fa-truck-monster"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=500&fit=crop" alt="Porsche Detail">
                 <div class="gallery-overlay">
-                    <h4>Porsche 911 Turbo</h4>
-                    <p>Complete Restoration</p>
+                    <h3 class="gallery-title">Porsche 911 Turbo S</h3>
+                    <p class="gallery-service">PPF Installation + Acid Rain Shield</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg">
-                    <i class="fas fa-shuttle-space"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?w=800&h=500&fit=crop" alt="McLaren Service">
                 <div class="gallery-overlay">
-                    <h4>McLaren 720S</h4>
-                    <p>Ceramic Pro Coating</p>
+                    <h3 class="gallery-title">McLaren 720S</h3>
+                    <p class="gallery-service">Complete Detail with Magic Restorer</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg">
-                    <i class="fas fa-motorcycle"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&h=500&fit=crop" alt="Aston Martin">
                 <div class="gallery-overlay">
-                    <h4>Aston Martin DB11</h4>
-                    <p>Interior & Exterior Detail</p>
+                    <h3 class="gallery-title">Aston Martin DB11</h3>
+                    <p class="gallery-service">Premium Wash & Ceramic Exotic Application</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg">
-                    <i class="fas fa-bus"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1555215695-3004980adade?w=800&h=500&fit=crop" alt="Bentley Interior">
                 <div class="gallery-overlay">
-                    <h4>Bentley Continental</h4>
-                    <p>Full Protection Package</p>
+                    <h3 class="gallery-title">Bentley Continental</h3>
+                    <p class="gallery-service">Deep Interior Cleaning & Conditioning</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                    <i class="fas fa-gem"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1566008885218-90abf9200ddb?w=800&h=500&fit=crop" alt="Bugatti Chiron">
                 <div class="gallery-overlay">
-                    <h4>Bugatti Chiron</h4>
-                    <p>Ceramic Exotic Application</p>
+                    <h3 class="gallery-title">Bugatti Chiron</h3>
+                    <p class="gallery-service">Exclusive Full Service Package</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                    <i class="fas fa-magic"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1541348263344-80e098e50a7f?w=800&h=500&fit=crop" alt="Pagani Huayra">
                 <div class="gallery-overlay">
-                    <h4>Pagani Huayra</h4>
-                    <p>Magic Restorer Treatment</p>
+                    <h3 class="gallery-title">Pagani Huayra</h3>
+                    <p class="gallery-service">Paint Correction & Protection</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                    <i class="fas fa-cloud-rain"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1597687210367-a494c8c9d43f?w=800&h=500&fit=crop" alt="Koenigsegg Jesko">
                 <div class="gallery-overlay">
-                    <h4>Koenigsegg Jesko</h4>
-                    <p>Acid Rain Shield Protection</p>
+                    <h3 class="gallery-title">Koenigsegg Jesko</h3>
+                    <p class="gallery-service">Ceramic Coating + Tool Kit Professional Use</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">
-                    <i class="fas fa-toolbox"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&h=500&fit=crop" alt="Rimac Nevera">
                 <div class="gallery-overlay">
-                    <h4>Rimac Nevera</h4>
-                    <p>Exotic Tool Kit in Action</p>
+                    <h3 class="gallery-title">Rimac Nevera</h3>
+                    <p class="gallery-service">Electric Vehicle Specialized Detail</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                    <i class="fas fa-star"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1563725619896-8e895ce0a5da?w=800&h=500&fit=crop" alt="Rolls Royce Phantom">
                 <div class="gallery-overlay">
-                    <h4>Lamborghini Aventador</h4>
-                    <p>Complete Transformation</p>
+                    <h3 class="gallery-title">Rolls-Royce Phantom</h3>
+                    <p class="gallery-service">Luxury Interior & Exterior Restoration</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
-                <div class="gallery-item-bg" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
-                    <i class="fas fa-crown"></i>
-                </div>
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ed5fa?w=800&h=500&fit=crop" alt="Mercedes AMG">
                 <div class="gallery-overlay">
-                    <h4>Rolls-Royce Phantom</h4>
-                    <p>Premium Detail Package</p>
+                    <h3 class="gallery-title">Mercedes-AMG GT</h3>
+                    <p class="gallery-service">Full Detail with All Exotic Products</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-title fade-in">
+            <h2>PREMIUM SERVICES</h2>
+            <p>Expert care for your exotic investment</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <i class="fas fa-gem service-icon"></i>
+                <h3>Full Ceramic Coating</h3>
+                <p>Complete paint decontamination, correction, and application of our signature Ceramic Exotic 9H coating.</p>
+                <div class="service-price">From $899</div>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-spray-can service-icon"></i>
+                <h3>Paint Correction</h3>
+                <p>Multi-stage polishing to remove swirls, scratches, and oxidation, restoring factory-perfect finish.</p>
+                <div class="service-price">From $599</div>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-couch service-icon"></i>
+                <h3>Interior Restoration</h3>
+                <p>Deep cleaning, leather conditioning, and application of Magic Restorer on all interior surfaces.</p>
+                <div class="service-price">From $449</div>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-shield-alt service-icon"></i>
+                <h3>PPF Installation</h3>
+                <p>Clear bra paint protection film installation with Acid Rain Shield top coat for maximum defense.</p>
+                <div class="service-price">From $1,899</div>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-tint service-icon"></i>
+                <h3>Engine Bay Detail</h3>
+                <p>Safe, thorough engine cleaning and dressing using specialized Exotic products.</p>
+                <div class="service-price">From $299</div>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-car service-icon"></i>
+                <h3>Maintenance Packages</h3>
+                <p>Regular upkeep plans to keep your exotic looking showroom-fresh year-round.</p>
+                <div class="service-price">From $199/mo</div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="section-header fade-in">
-            <span class="section-tag">Testimonials</span>
-            <h2>What Our <span>Clients Say</span></h2>
-            <p>Don't just take our word for it—hear from our satisfied customers</p>
+    <section id="testimonials">
+        <div class="section-title fade-in">
+            <h2>CLIENT REVIEWS</h2>
+            <p>What owners and our team say about Exotic Car Care</p>
         </div>
         <div class="testimonials-grid">
+            <!-- Customer 1 -->
             <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
+                <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p class="testimonial-text">"Absolutely phenomenal service! They treated my Ferrari like it was their own. The attention to detail is unmatched, and the results speak for themselves. Highly recommend!"</p>
+                <p class="testimonial-text">"I've trusted Exotic Car Care with my Lamborghini collection for three years now. The Ceramic Exotic product they applied still looks incredible. The attention to detail is simply unmatched in the industry."</p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael R." class="author-avatar">
                     <div class="author-info">
-                        <h4>Michael Rodriguez</h4>
-                        <p>Ferrari 488 Owner</p>
+                        <h4>Michael Richardson</h4>
+                        <p class="author-role">Lamborghini Aventador Owner</p>
+                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Verified Customer</div>
                     </div>
                 </div>
             </div>
+
+            <!-- Customer 2 -->
             <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
+                <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p class="testimonial-text">"I've taken my Lamborghini to detailers across the country, and Exotic Car Care is by far the best. Professional, knowledgeable, and the quality is second to none."</p>
+                <p class="testimonial-text">"The website booking system made scheduling so easy! I purchased the Magic Restorer online and had it delivered in 2 days. My Ferrari's interior trim looks brand new again. Exceptional products and service!"</p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah K." class="author-avatar">
                     <div class="author-info">
-                        <h4>Sarah Chen</h4>
-                        <p>Lamborghini Huracán Owner</p>
+                        <h4>Sarah Kensington</h4>
+                        <p class="author-role">Ferrari 488 Spider Owner</p>
+                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Verified Customer</div>
                     </div>
                 </div>
             </div>
+
+            <!-- Product Review 1 -->
             <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
+                <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p class="testimonial-text">"The ceramic coating they applied to my Porsche has been incredible. Water beads off like magic, and the shine is still perfect months later. Worth every penny!"</p>
+                <p class="testimonial-text">"Ceramic Exotic is hands down the best coating I've used in 15 years of detailing. The hydrophobic effect is insane, and the depth it adds to the paint is mesmerizing. Worth every penny for my Pagani."</p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="David L." class="author-avatar">
+                    <div class="author-info">
+                        <h4>David Laurent</h4>
+                        <p class="author-role">Pagani Huayra Owner</p>
+                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Product Review</div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Product Review 2 -->
+            <div class="testimonial-card fade-in">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Living in Florida, acid rain was destroying my McLaren's clear coat. The Acid Rain Shield from Exotic completely solved this problem. Applied it 8 months ago and still zero etching. This product is a game-changer!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="James T." class="author-avatar">
                     <div class="author-info">
                         <h4>James Thompson</h4>
-                        <p>Porsche 911 Turbo Owner</p>
+                        <p class="author-role">McLaren 720S Owner</p>
+                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Product Review</div>
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"This website made booking so easy! I scheduled my McLaren's full detail online and got instant confirmation. The service reminders and photo updates throughout the process were amazing. Best customer experience ever!"</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="author-info">
-                        <h4>David Park</h4>
-                        <p>McLaren 720S Owner</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"I bought their Ceramic Exotic product for home maintenance between professional details. It's incredible how easy it makes upkeep! My Bugatti stays showroom fresh with minimal effort. Exotic brand products are game-changers!"</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="author-info">
-                        <h4>Alexandra Morrison</h4>
-                        <p>Bugatti Chiron Owner</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"As a service advisor at Exotic Car Care, I'm proud to work here every day. Our team's passion for perfection and genuine care for clients sets us apart. We don't just detail cars—we build relationships."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <div class="author-info">
-                        <h4>Marcus Williams</h4>
-                        <p>Senior Service Advisor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"The Magic Restorer product saved my Aston Martin's faded trim! I thought I'd need expensive replacements, but one application and it looked brand new. Exotic's product line is absolutely premium quality."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="author-info">
-                        <h4>Robert Hamilton</h4>
-                        <p>Aston Martin DBS Owner</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"Living in Seattle, acid rain was destroying my Pagani's paint. Their Acid Rain protective treatment has been a lifesaver! The hydrophobic properties are insane—rain just slides right off. Must-have for any exotic owner!"</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="author-info">
-                        <h4>Jennifer Wu</h4>
-                        <p>Pagani Huayra Owner</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">"I've been a lead technician here for 5 years, and the pride we take in every vehicle is unmatched. When you see a client's face light up seeing their Koenigsegg looking better than new—that's why we do what we do."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user-cog"></i>
-                    </div>
-                    <div class="author-info">
-                        <h4>Carlos Mendez</h4>
-                        <p>Lead Detail Technician</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <div class="section-header fade-in">
-            <span class="section-tag">Exotic Products</span>
-            <h2>Premium <span>Care Products</span></h2>
-            <p>Professional-grade products used by our experts, now available for your home garage</p>
-        </div>
-        <div class="products-grid">
-            <div class="product-card fade-in">
-                <div class="product-badge">Best Seller</div>
-                <div class="product-image">
-                    <div class="product-icon">
-                        <i class="fas fa-gem"></i>
+            <!-- Staff Testimonial 1 -->
+            <div class="testimonial-card fade-in">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Working at Exotic Car Care has been the highlight of my career. The products we use are truly professional-grade, and seeing the transformation in these incredible machines every day never gets old. Proud to be part of this team!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emma S." class="author-avatar">
+                    <div class="author-info">
+                        <h4>Emma Sullivan</h4>
+                        <p class="author-role">Senior Service Advisor</p>
+                        <div class="verified-badge"><i class="fas fa-user-tie"></i> Team Member</div>
                     </div>
                 </div>
-                <div class="product-info">
-                    <h3>Ceramic Exotic</h3>
-                    <p class="product-desc">Our flagship 9H ceramic coating delivers unmatched protection and mirror-like shine. Lasts up to 5 years with proper maintenance.</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> 9H Hardness Protection</li>
-                        <li><i class="fas fa-check"></i> Hydrophobic Technology</li>
-                        <li><i class="fas fa-check"></i> UV Resistance</li>
-                        <li><i class="fas fa-check"></i> 5-Year Durability</li>
-                    </ul>
-                    <div class="product-price">$149.99</div>
-                    <button class="btn btn-primary product-btn">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
-                </div>
             </div>
-            <div class="product-card fade-in">
-                <div class="product-badge hot">Hot</div>
-                <div class="product-image">
-                    <div class="product-icon" style="background: var(--secondary-gradient);">
-                        <i class="fas fa-magic"></i>
+
+            <!-- Staff Testimonial 2 -->
+            <div class="testimonial-card fade-in">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"As Lead Technician, I've worked with countless products over 20 years. The Exotic brand line – especially Ceramic Exotic and the Tool Kit – sets a new standard. Our clients notice the difference immediately. Quality you can trust."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Marcus J." class="author-avatar">
+                    <div class="author-info">
+                        <h4>Marcus Johnson</h4>
+                        <p class="author-role">Lead Detail Technician</p>
+                        <div class="verified-badge"><i class="fas fa-user-tie"></i> Team Member</div>
                     </div>
                 </div>
-                <div class="product-info">
-                    <h3>Magic Restorer</h3>
-                    <p class="product-desc">Revitalize faded plastic, rubber, and vinyl instantly. One application restores factory-fresh appearance that lasts months.</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Instant Restoration</li>
-                        <li><i class="fas fa-check"></i> Long-Lasting Formula</li>
-                        <li><i class="fas fa-check"></i> Non-Greasy Finish</li>
-                        <li><i class="fas fa-check"></i> All Surfaces Safe</li>
-                    </ul>
-                    <div class="product-price">$49.99</div>
-                    <button class="btn btn-primary product-btn">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
-                </div>
             </div>
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <div class="product-icon" style="background: var(--accent-gradient);">
-                        <i class="fas fa-cloud-rain"></i>
+
+            <!-- Customer 3 -->
+            <div class="testimonial-card fade-in">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Bought the complete Exotic Tool Kit for my home garage. Everything I need to maintain my Porsche between professional services. The quality of the microfibers and brushes is outstanding. Highly recommend!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Jennifer M." class="author-avatar">
+                    <div class="author-info">
+                        <h4>Jennifer Martinez</h4>
+                        <p class="author-role">Porsche 911 GT3 Owner</p>
+                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Product Review</div>
                     </div>
                 </div>
-                <div class="product-info">
-                    <h3>Acid Rain Shield</h3>
-                    <p class="product-desc">Advanced polymer sealant specifically formulated to protect against acid rain, bird droppings, and environmental contaminants.</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Acid Neutralization</li>
-                        <li><i class="fas fa-check"></i> Extreme Hydrophobicity</li>
-                        <li><i class="fas fa-check"></i> Easy Application</li>
-                        <li><i class="fas fa-check"></i> 12-Month Protection</li>
-                    </ul>
-                    <div class="product-price">$79.99</div>
-                    <button class="btn btn-primary product-btn">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
-                </div>
             </div>
-            <div class="product-card fade-in">
-                <div class="product-badge pro">Pro Kit</div>
-                <div class="product-image">
-                    <div class="product-icon" style="background: var(--gold-gradient);">
-                        <i class="fas fa-toolbox"></i>
+
+            <!-- Website Experience -->
+            <div class="testimonial-card fade-in">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"The Exotic Car Care website is beautifully designed and so user-friendly. I browsed the gallery, read all the testimonials, ordered products, and booked a full detail – all in one seamless experience. Best car care website I've used!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Robert C." class="author-avatar">
+                    <div class="author-info">
+                        <h4>Robert Chen</h4>
+                        <p class="author-role">Bugatti Chiron Owner</p>
+                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Verified Customer</div>
                     </div>
                 </div>
-                <div class="product-info">
-                    <h3>Exotic Tool Kit</h3>
-                    <p class="product-desc">Complete professional detailing tool set including microfiber towels, applicators, brushes, and premium carrying case.</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> 25-Piece Complete Set</li>
-                        <li><i class="fas fa-check"></i> Premium Microfibers</li>
-                        <li><i class="fas fa-check"></i> Ergonomic Design</li>
-                        <li><i class="fas fa-check"></i> Professional Grade</li>
-                    </ul>
-                    <div class="product-price">$199.99</div>
-                    <button class="btn btn-primary product-btn">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
+            </div>
+
+            <!-- Customer 4 -->
+            <div class="testimonial-card fade-in">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"My Koenigsegg needed serious paint correction after track damage. The team at Exotic worked miracles. Combined with their Ceramic Exotic coating, it now looks better than when I took delivery. Absolutely phenomenal work!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/73.jpg" alt="Alexander V." class="author-avatar">
+                    <div class="author-info">
+                        <h4>Alexander Volkov</h4>
+                        <p class="author-role">Koenigsegg Jesko Owner</p>
+                        <div class="verified-badge"><i class="fas fa-check-circle"></i> Verified Customer</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="products-cta fade-in">
-            <h3>All Products <span>Branded by Exotic</span></h3>
-            <p>Every product is developed and tested by our team of expert detailers to ensure professional results every time.</p>
-            <button class="btn btn-secondary">
-                <i class="fas fa-store"></i> View Full Store
-            </button>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section id="contact">
+        <div class="section-title fade-in">
+            <h2>GET IN TOUCH</h2>
+            <p>Ready to give your exotic the care it deserves?</p>
+        </div>
         <div class="contact-container">
             <div class="contact-info fade-in">
-                <h2>Ready to <span>Transform</span> Your Ride?</h2>
-                <p>Contact us today to schedule your appointment or request a custom quote. Our team is ready to provide your vehicle with the care it deserves.</p>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Location</h4>
-                            <p>123 Luxury Lane, Beverly Hills, CA 90210</p>
-                        </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>(555) 123-4567</p>
-                        </div>
+                    <div class="contact-text">
+                        <h4>Location</h4>
+                        <p>1234 Luxury Lane, Beverly Hills, CA 90210</p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@exoticcarcare.com</p>
-                        </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <p>(310) 555-EXOTIC</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p>care@exoticcarcare.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Business Hours</h4>
+                        <p>Mon-Sat: 8AM - 7PM<br>Sun: By Appointment</p>
                     </div>
                 </div>
             </div>
-            <form class="contact-form fade-in" id="contactForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="(555) 123-4567" required>
-                    </div>
+            <form class="contact-form fade-in">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="john@example.com" required>
+                    <label>Email</label>
+                    <input type="email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <label for="vehicle">Vehicle Make & Model</label>
-                    <input type="text" id="vehicle" placeholder="e.g., Lamborghini Huracán" required>
-                </div>
-                <div class="form-group">
-                    <label for="service">Service Interested In</label>
-                    <select id="service" required>
-                        <option value="">Select a service...</option>
-                        <option value="full-detail">Full Detail Package</option>
-                        <option value="ceramic">Ceramic Coating</option>
-                        <option value="paint-correction">Paint Correction</option>
-                        <option value="interior">Interior Restoration</option>
-                        <option value="ppf">PPF Installation</option>
-                        <option value="engine">Engine Bay Detail</option>
-                        <option value="custom">Custom Package</option>
+                    <label>Service Interested In</label>
+                    <select>
+                        <option>Select a Service</option>
+                        <option>Full Ceramic Coating</option>
+                        <option>Paint Correction</option>
+                        <option>Interior Restoration</option>
+                        <option>PPF Installation</option>
+                        <option>Product Purchase</option>
+                        <option>Other</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="message">Additional Notes</label>
-                    <textarea id="message" placeholder="Tell us about your vehicle and any specific concerns..."></textarea>
+                    <label>Message</label>
+                    <textarea placeholder="Tell us about your vehicle and needs..."></textarea>
                 </div>
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
             </form>
         </div>
     </section>
@@ -1784,102 +1278,47 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-brand">
-                <div class="logo">
-                    <i class="fas fa-car-side"></i>
-                    Exotic Car Care
-                </div>
-                <p>The premier destination for exotic and luxury vehicle detailing. We combine expertise, passion, and the finest products to deliver exceptional results.</p>
+            <div class="footer-section">
+                <h3>EXOTIC</h3>
+                <p>The premier destination for exotic car care, detailing services, and professional-grade automotive products. Where luxury meets perfection.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#services">Services</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact">Contact</a>
             </div>
-            <div class="footer-links">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#services">Full Detail</a></li>
-                    <li><a href="#services">Ceramic Coating</a></li>
-                    <li><a href="#services">Paint Correction</a></li>
-                    <li><a href="#services">PPF Installation</a></li>
-                    <li><a href="#services">Interior Care</a></li>
-                </ul>
+            <div class="footer-section">
+                <h3>Products</h3>
+                <a href="#">Ceramic Exotic</a>
+                <a href="#">Magic Restorer</a>
+                <a href="#">Acid Rain Shield</a>
+                <a href="#">Exotic Tool Kit</a>
             </div>
-            <div class="footer-links">
-                <h4>Business Hours</h4>
-                <ul>
-                    <li>Mon - Fri: 8AM - 6PM</li>
-                    <li>Saturday: 9AM - 5PM</li>
-                    <li>Sunday: By Appointment</li>
-                </ul>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>1234 Luxury Lane</p>
+                <p>Beverly Hills, CA 90210</p>
+                <p>(310) 555-EXOTIC</p>
+                <p>care@exoticcarcare.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Exotic Car Care. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #f5576c;"></i> for Car Enthusiasts</p>
+            <p>&copy; 2024 Exotic Car Care. All rights reserved. | Designed with passion for exotic enthusiasts.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
         // Scroll animations
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1893,90 +1332,68 @@
             });
         }, observerOptions);
 
-        fadeElements.forEach(el => observer.observe(el));
-
-        // Counter animation for stats
-        const statNumbers = document.querySelectorAll('.stat-number');
-        
-        const animateCounter = (element) => {
-            const target = parseInt(element.getAttribute('data-target'));
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
-
-            const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    element.textContent = Math.floor(current);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target;
-                    if (target === 100) {
-                        element.textContent = target + '%';
-                    } else if (target === 2500) {
-                        element.textContent = target + '+';
-                    } else {
-                        element.textContent = target + '+';
-                    }
-                }
-            };
-
-            updateCounter();
-        };
-
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(entry.target);
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        statNumbers.forEach(stat => statsObserver.observe(stat));
-
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const vehicle = document.getElementById('vehicle').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-
-            // Show success message (in real app, this would send to backend)
-            alert(`Thank you ${name}! Your inquiry has been received. We'll contact you at ${email} or ${phone} within 24 hours to discuss your ${vehicle}'s ${service} service.`);
-            
-            // Reset form
-            contactForm.reset();
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
 
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroContent = document.querySelector('.hero-content');
-            if (heroContent && scrolled < window.innerHeight) {
-                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-                heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'rgba(15, 23, 42, 0.98)';
+                navLinks.style.padding = '2rem';
             }
         });
 
-        // Add hover effect to service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.zIndex = '10';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.zIndex = '1';
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        navLinks.style.display = 'none';
+                    }
+                }
             });
         });
 
-        console.log('🚗 Exotic Car Care Website Loaded Successfully!');
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! Our team will contact you within 24 hours.');
+            e.target.reset();
+        });
+
+        // Add to cart buttons
+        document.querySelectorAll('.btn-buy').forEach(btn => {
+            btn.addEventListener('click', () => {
+                alert('Product added to cart! Continue shopping or proceed to checkout.');
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.8)';
+            }
+        });
     </script>
 </body>
 </html>
