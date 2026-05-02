@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embassy Suites San Antonio Landmark | Luxury Hotel Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">ES</span>
+                <span class="logo-text">Embassy Suites</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#rooms" class="nav-link">Rooms & Suites</a></li>
+                <li><a href="#amenities" class="nav-link">Amenities</a></li>
+                <li><a href="#dining" class="nav-link">Dining</a></li>
+                <li><a href="#events" class="nav-link">Events</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-book" onclick="scrollToBooking()">Book Now</button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Welcome to San Antonio</p>
+            <h1 class="hero-title">Embassy Suites<br>San Antonio Landmark</h1>
+            <p class="hero-description">Experience luxury and comfort in the heart of Texas Hill Country</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToBooking()">Reserve Your Stay</button>
+                <button class="btn-secondary" onclick="scrollToAbout()">Explore More</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Booking Bar -->
+    <div class="booking-bar" id="booking-bar">
+        <form class="booking-form" onsubmit="handleBooking(event)">
+            <div class="form-group">
+                <label for="check-in">Check In</label>
+                <input type="date" id="check-in" required>
+            </div>
+            <div class="form-group">
+                <label for="check-out">Check Out</label>
+                <input type="date" id="check-out" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">Guests</label>
+                <select id="guests" required>
+                    <option value="">Select</option>
+                    <option value="1">1 Adult</option>
+                    <option value="2">2 Adults</option>
+                    <option value="3">3 Adults</option>
+                    <option value="4">4+ Adults</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rooms">Rooms</label>
+                <select id="rooms" required>
+                    <option value="">Select</option>
+                    <option value="1">1 Room</option>
+                    <option value="2">2 Rooms</option>
+                    <option value="3">3+ Rooms</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-check-availability">Check Availability</button>
+        </form>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Discover Excellence</p>
+                <h2 class="section-title">Your Home Away From Home</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="about-text">
+                        Nestled in the scenic Texas Hill Country, Embassy Suites San Antonio Landmark offers an 
+                        unparalleled luxury experience. Our all-suite hotel features spacious two-room suites, 
+                        complimentary made-to-order breakfast, and evening receptions.
+                    </p>
+                    <p class="about-text">
+                        Whether you're traveling for business or leisure, our dedicated team ensures every moment 
+                        of your stay exceeds expectations. Enjoy our prime location near top attractions including 
+                        SeaWorld, Six Flags Fiesta Texas, and the vibrant River Walk.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">247</span>
+                            <span class="stat-label">Luxury Suites</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Concierge Service</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Satisfaction Guaranteed</span>
+                        </div>
+                    </div>
+                    <button class="btn-primary">Learn More</button>
+                </div>
+                <div class="about-images">
+                    <div class="image-card main-image">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop" alt="Hotel Exterior">
+                    </div>
+                    <div class="image-card secondary-image top">
+                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400&h=300&fit=crop" alt="Luxury Lobby">
+                    </div>
+                    <div class="image-card secondary-image bottom">
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&h=300&fit=crop" alt="Hotel Amenities">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms & Suites Section -->
+    <section id="rooms" class="rooms-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">Accommodations</p>
+                <h2 class="section-title">Rooms & Suites</h2>
+                <p class="section-description">Spacious two-room suites designed for comfort and elegance</p>
+                <div class="divider"></div>
+            </div>
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&h=600&fit=crop" alt="King Suite">
+                        <div class="room-badge">Popular</div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">King Suite</h3>
+                        <p class="room-description">Elegant suite with one king bed, separate living area, and premium amenities</p>
+                        <div class="room-features">
+                            <span class="feature">550 sq ft</span>
+                            <span class="feature">King Bed</span>
+                            <span class="feature">City View</span>
+                            <span class="feature">Wet Bar</span>
+                        </div>
+                        <div class="room-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">$189</span>
+                            <span class="price-period">/night</span>
+                        </div>
+                        <button class="btn-outline">View Details</button>
+                    </div>
+                </div>
+                <div class="room-card featured">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733425?w=800&h=600&fit=crop" alt="Two Queen Suite">
+                        <div class="room-badge best-value">Best Value</div>
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Two Queen Suite</h3>
+                        <p class="room-description">Spacious suite perfect for families with two queen beds and separate living space</p>
+                        <div class="room-features">
+                            <span class="feature">600 sq ft</span>
+                            <span class="feature">2 Queen Beds</span>
+                            <span class="feature">Hill Country View</span>
+                            <span class="feature">Wet Bar</span>
+                        </div>
+                        <div class="room-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">$209</span>
+                            <span class="price-period">/night</span>
+                        </div>
+                        <button class="btn-primary">View Details</button>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800&h=600&fit=crop" alt="Executive Suite">
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">Executive Suite</h3>
+                        <p class="room-description">Premium suite with enhanced amenities, perfect for business travelers</p>
+                        <div class="room-features">
+                            <span class="feature">750 sq ft</span>
+                            <span class="feature">King Bed</span>
+                            <span class="feature">Panoramic View</span>
+                            <span class="feature">Executive Lounge Access</span>
+                        </div>
+                        <div class="room-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">$289</span>
+                            <span class="price-period">/night</span>
+                        </div>
+                        <button class="btn-outline">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="amenities-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">Luxury Amenities</p>
+                <h2 class="section-title">Everything You Need</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-icon">🏊</div>
+                    <h3 class="amenity-title">Indoor Pool</h3>
+                    <p class="amenity-description">Heated indoor pool with whirlpool spa for year-round relaxation</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🍳</div>
+                    <h3 class="amenity-title">Complimentary Breakfast</h3>
+                    <p class="amenity-description">Made-to-order breakfast served daily to start your day right</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🍷</div>
+                    <h3 class="amenity-title">Evening Reception</h3>
+                    <p class="amenity-description">Complimentary drinks and light snacks every evening</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">💪</div>
+                    <h3 class="amenity-title">Fitness Center</h3>
+                    <p class="amenity-description">24-hour state-of-the-art fitness facility with modern equipment</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🅿️</div>
+                    <h3 class="amenity-title">Free Parking</h3>
+                    <p class="amenity-description">Complimentary self-parking for all registered guests</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">📶</div>
+                    <h3 class="amenity-title">High-Speed WiFi</h3>
+                    <p class="amenity-description">Complimentary wireless internet throughout the hotel</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">👔</div>
+                    <h3 class="amenity-title">Business Center</h3>
+                    <p class="amenity-description">Full-service business center with printing and meeting facilities</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🐾</div>
+                    <h3 class="amenity-title">Pet Friendly</h3>
+                    <p class="amenity-description">We welcome your furry friends with special pet amenities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Section -->
+    <section id="dining" class="dining-section">
+        <div class="container">
+            <div class="dining-wrapper">
+                <div class="dining-content">
+                    <p class="section-subtitle">Culinary Excellence</p>
+                    <h2 class="section-title">Dining Options</h2>
+                    <div class="divider left"></div>
+                    <p class="dining-text">
+                        Start your day with our complimentary made-to-order breakfast, featuring fresh ingredients 
+                        and chef-prepared classics. Each evening, join us for our complimentary evening reception 
+                        with beverages and light refreshments.
+                    </p>
+                    <div class="dining-hours">
+                        <div class="hours-item">
+                            <h4>Breakfast</h4>
+                            <p>6:00 AM - 10:00 AM Daily</p>
+                        </div>
+                        <div class="hours-item">
+                            <h4>Evening Reception</h4>
+                            <p>5:30 PM - 7:30 PM Mon-Thu</p>
+                        </div>
+                    </div>
+                    <button class="btn-primary">View Menu</button>
+                </div>
+                <div class="dining-image">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=1000&fit=crop" alt="Restaurant">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">Gatherings</p>
+                <h2 class="section-title">Events & Meetings</h2>
+                <p class="section-description">Professional event spaces for weddings, conferences, and celebrations</p>
+                <div class="divider"></div>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&h=400&fit=crop" alt="Wedding">
+                    <div class="event-overlay">
+                        <h3>Weddings</h3>
+                        <p>Create unforgettable memories</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&h=400&fit=crop" alt="Conference">
+                    <div class="event-overlay">
+                        <h3>Business Meetings</h3>
+                        <p>Professional conference facilities</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop" alt="Celebration">
+                    <div class="event-overlay">
+                        <h3>Special Events</h3>
+                        <p>Celebrate life's moments</p>
+                    </div>
+                </div>
+            </div>
+            <div class="events-cta">
+                <button class="btn-primary">Plan Your Event</button>
+                <button class="btn-outline">Download Brochure</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header center">
+                <p class="section-subtitle">Guest Reviews</p>
+                <h2 class="section-title">What Our Guests Say</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="testimonials-slider" id="testimonials-slider">
+                <div class="testimonial-card active">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Absolutely wonderful stay! The staff went above and beyond to make our anniversary special. The suite was spacious and beautifully appointed."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah M." class="author-image">
+                        <div class="author-info">
+                            <h4>Sarah M.</h4>
+                            <p>Verified Guest</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Perfect location for exploring San Antonio. The complimentary breakfast was excellent and the evening reception was a nice touch."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James R." class="author-image">
+                        <div class="author-info">
+                            <h4>James R.</h4>
+                            <p>Business Traveler</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Our family vacation was made perfect by this hotel. The kids loved the pool and we appreciated the extra space in the suite."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily T." class="author-image">
+                        <div class="author-info">
+                            <h4>Emily T.</h4>
+                            <p>Family Vacation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev" onclick="prevTestimonial()">❮</button>
+                <div class="slider-dots">
+                    <span class="dot active" onclick="goToTestimonial(0)"></span>
+                    <span class="dot" onclick="goToTestimonial(1)"></span>
+                    <span class="dot" onclick="goToTestimonial(2)"></span>
+                </div>
+                <button class="slider-btn next" onclick="nextTestimonial()">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p class="section-subtitle">Get In Touch</p>
+                    <h2 class="section-title">Contact Us</h2>
+                    <div class="divider left"></div>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <h4>Address</h4>
+                                <p>5900 Northwest Loop 410<br>San Antonio, TX 78238</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (210) 647-1000</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@embassysuitessa.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🕐</span>
+                            <div>
+                                <h4>Front Desk</h4>
+                                <p>Available 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">💼</a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" onsubmit="handleContact(event)">
+                        <h3>Send Us a Message</h3>
+                        <div class="form-row">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="tel" placeholder="Phone Number">
+                            <select>
+                                <option value="">Subject</option>
+                                <option value="reservation">Reservation Inquiry</option>
+                                <option value="event">Event Planning</option>
+                                <option value="general">General Question</option>
+                            </select>
+                        </div>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="btn-primary full-width">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3427.672883089093!2d-98.6183!3d29.5144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c7a3b1234567%3A0x1234567890abcdef!2s5900%20Northwest%20Loop%20410%2C%20San%20Antonio%2C%20TX%2078238!5e0!3m2!1sen!2sus!4v1234567890" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">ES</span>
+                        <span class="logo-text">Embassy Suites</span>
+                    </div>
+                    <p class="footer-description">Experience luxury and exceptional service at Embassy Suites San Antonio Landmark. Your perfect getaway awaits.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#rooms">Rooms & Suites</a></li>
+                        <li><a href="#amenities">Amenities</a></li>
+                        <li><a href="#dining">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#events">Events & Meetings</a></li>
+                        <li><a href="#">Weddings</a></li>
+                        <li><a href="#">Business Center</a></li>
+                        <li><a href="#">Concierge</a></li>
+                        <li><a href="#">Transportation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for exclusive offers and updates</p>
+                    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">→</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Embassy Suites San Antonio Landmark. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Accessibility</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
