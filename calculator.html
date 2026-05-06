@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Functions Calculator</h1>
+        
+        <div class="calculator">
+            <!-- Display -->
+            <div class="display">
+                <input type="text" id="expression" placeholder="Enter expression" readonly>
+                <div class="result" id="result">0</div>
+            </div>
+            
+            <!-- Function Buttons -->
+            <div class="functions-section">
+                <h3>Functions</h3>
+                <div class="button-grid functions-grid">
+                    <button onclick="addFunction('sin')">sin</button>
+                    <button onclick="addFunction('cos')">cos</button>
+                    <button onclick="addFunction('tan')">tan</button>
+                    <button onclick="addFunction('asin')">sin⁻¹</button>
+                    <button onclick="addFunction('acos')">cos⁻¹</button>
+                    <button onclick="addFunction('atan')">tan⁻¹</button>
+                    <button onclick="addFunction('sqrt')">√</button>
+                    <button onclick="addFunction('cbrt')">∛</button>
+                    <button onclick="addFunction('log')">log</button>
+                    <button onclick="addFunction('ln')">ln</button>
+                    <button onclick="addFunction('exp')">eˣ</button>
+                    <button onclick="addFunction('abs')">|x|</button>
+                    <button onclick="addFunction('floor')">⌊x⌋</button>
+                    <button onclick="addFunction('ceil')">⌈x⌉</button>
+                    <button onclick="addFunction('round')">round</button>
+                    <button onclick="addFunction('factorial')">n!</button>
+                    <button onclick="addFunction('pow2')">x²</button>
+                    <button onclick="addFunction('pow3')">x³</button>
+                </div>
+            </div>
+            
+            <!-- Constants -->
+            <div class="constants-section">
+                <h3>Constants</h3>
+                <div class="button-grid constants-grid">
+                    <button onclick="addConstant('pi')">π</button>
+                    <button onclick="addConstant('e')">e</button>
+                    <button onclick="addConstant('phi')">φ</button>
+                </div>
+            </div>
+            
+            <!-- Main Calculator -->
+            <div class="main-calc-section">
+                <div class="button-grid calc-grid">
+                    <button class="btn-clear" onclick="clearAll()">AC</button>
+                    <button class="btn-clear" onclick="clearEntry()">CE</button>
+                    <button class="btn-operator" onclick="addOperator('(')">(</button>
+                    <button class="btn-operator" onclick="addOperator(')')">)</button>
+                    
+                    <button class="btn-number" onclick="addNumber('7')">7</button>
+                    <button class="btn-number" onclick="addNumber('8')">8</button>
+                    <button class="btn-number" onclick="addNumber('9')">9</button>
+                    <button class="btn-operator" onclick="addOperator('/')">÷</button>
+                    
+                    <button class="btn-number" onclick="addNumber('4')">4</button>
+                    <button class="btn-number" onclick="addNumber('5')">5</button>
+                    <button class="btn-number" onclick="addNumber('6')">6</button>
+                    <button class="btn-operator" onclick="addOperator('*')">×</button>
+                    
+                    <button class="btn-number" onclick="addNumber('1')">1</button>
+                    <button class="btn-number" onclick="addNumber('2')">2</button>
+                    <button class="btn-number" onclick="addNumber('3')">3</button>
+                    <button class="btn-operator" onclick="addOperator('-')">−</button>
+                    
+                    <button class="btn-number" onclick="addNumber('0')">0</button>
+                    <button class="btn-number" onclick="addNumber('.')">.</button>
+                    <button class="btn-equals" onclick="calculate()">=</button>
+                    <button class="btn-operator" onclick="addOperator('+')">+</button>
+                    
+                    <button class="btn-operator" onclick="addOperator('^')">xʸ</button>
+                    <button class="btn-operator" onclick="addOperator('%')">mod</button>
+                    <button class="btn-clear" onclick="backspace()">⌫</button>
+                    <button class="btn-operator" onclick="toggleSign()">±</button>
+                </div>
+            </div>
+            
+            <!-- Mode Toggle -->
+            <div class="mode-toggle">
+                <label>Angle Mode:</label>
+                <select id="angleMode" onchange="updateMode()">
+                    <option value="deg">Degrees</option>
+                    <option value="rad">Radians</option>
+                </select>
+                <span id="currentMode" class="mode-indicator">DEG</span>
+            </div>
+            
+            <!-- History -->
+            <div class="history-section">
+                <h3>History</h3>
+                <div class="history-list" id="historyList">
+                    <p class="no-history">No calculations yet</p>
+                </div>
+                <button class="btn-clear-history" onclick="clearHistory()">Clear History</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="calculator.js"></script>
+</body>
+</html>
